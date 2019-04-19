@@ -1,0 +1,4 @@
+{
+    "appService.deploySubpath": "dist\\recourse",
+    "appService.defaultWebAppToDeploy": "/subscriptions/ea0db026-6e1d-47c3-a664-8f22592787e8/resourceGroups/appsvc_rg_linux_centralus/providers/Microsoft.Web/sites/10minPlayground"
+}
