@@ -9,9 +9,20 @@
   >
     <mat-toolbar>Menu</mat-toolbar>
     <mat-nav-list>
-      <a mat-list-item href="#">Link 1</a>
-      <a mat-list-item href="#">Link 2</a>
-      <a mat-list-item href="#">Link 3</a>
+      <a
+        mat-list-item
+        href="#"
+        [routerLink]="['/main']"
+        routerLinkActive="router-link-active"
+        >Main</a
+      >
+
+      <a
+        *ngFor="let course of (courses$ | async)"
+        mat-list-item
+        [routerLink]="['/course/' + course.slug]"
+        >{{ course.title }}</a
+      >
     </mat-nav-list>
   </mat-sidenav>
   <mat-sidenav-content>
@@ -25,7 +36,7 @@
       >
         <mat-icon aria-label="Side nav toggle icon">menu</mat-icon>
       </button>
-      <span>recourse</span>
+      <span>10min Recourse</span>
     </mat-toolbar>
 
     <app-main-page></app-main-page>
