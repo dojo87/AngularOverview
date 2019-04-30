@@ -1,0 +1,15 @@
+<div (click)="selected()" style="background: green">
+  <div [ngSwitch]="type.toUpperCase()">
+    <div *ngSwitchCase="'IMAGE'">
+      <img
+        src="{{ content.url }}"
+        alt="{{ content.alt }}"
+        title="{{ header }}"
+      />
+    </div>
+    <div *ngSwitchDefault>
+      <mat-card-subtitle>{{ header }}</mat-card-subtitle>
+      <p>{{ content.toString() }}</p>
+    </div>
+  </div>
+</div>

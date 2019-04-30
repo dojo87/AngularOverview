@@ -1,0 +1,17 @@
+<mat-card>
+  <mat-card-title>
+    {{ (course$ | async).title }}
+  </mat-card-title>
+  <mat-card-content>
+    <div>
+      <section *ngFor="let section of (course$ | async).sections">
+        <app-section-engine
+          [type]="section.type"
+          [header]="section.header"
+          [content]="section.content"
+          (hasBeenSelected)="sectionSelected($event)"
+        ></app-section-engine>
+      </section>
+    </div>
+  </mat-card-content>
+</mat-card>
