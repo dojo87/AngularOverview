@@ -3,6 +3,7 @@ import { ActivatedRoute } from '@angular/router';
 import { CourseService } from '../services/course.service';
 import { Course } from '../model/course';
 import { Observable } from 'rxjs';
+import { Section } from '../model/section';
 
 @Component({
   selector: 'app-course',
@@ -11,6 +12,8 @@ import { Observable } from 'rxjs';
 })
 export class CourseComponent implements OnInit {
   public course$: Observable<Course>;
+
+  public selectedSection: Section;
 
   constructor(
     private route: ActivatedRoute,
@@ -21,8 +24,8 @@ export class CourseComponent implements OnInit {
     this.loadCourse();
   }
 
-  public sectionSelected(event: any) {
-    alert(event);
+  public sectionSelected(section: Section) {
+    this.selectedSection = section;
   }
 
   loadCourse() {

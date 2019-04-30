@@ -1,15 +1,15 @@
-<div (click)="selected()" style="background: green">
-  <div [ngSwitch]="type.toUpperCase()">
+<div (dblclick)="selected()">
+  <div [ngSwitch]="section.type.toUpperCase()">
     <div *ngSwitchCase="'IMAGE'">
       <img
-        src="{{ content.url }}"
-        alt="{{ content.alt }}"
-        title="{{ header }}"
+        src="{{ section.content.url }}"
+        alt="{{ section.content.alt }}"
+        title="{{ section.header }}"
       />
     </div>
-    <div *ngSwitchDefault>
-      <mat-card-subtitle>{{ header }}</mat-card-subtitle>
-      <p>{{ content.toString() }}</p>
+    <div *ngSwitchDefault class="mat-typography">
+      <mat-card-subtitle>{{ section.header }}</mat-card-subtitle>
+      <p>{{ section.content.toString() }}</p>
     </div>
   </div>
 </div>

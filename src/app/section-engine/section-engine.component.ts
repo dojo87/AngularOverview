@@ -1,4 +1,5 @@
 import { Component, OnInit, Input, Output, EventEmitter } from '@angular/core';
+import { Section } from '../model/section';
 
 @Component({
   selector: 'app-section-engine',
@@ -6,15 +7,13 @@ import { Component, OnInit, Input, Output, EventEmitter } from '@angular/core';
   styleUrls: ['./section-engine.component.scss']
 })
 export class SectionEngineComponent implements OnInit {
-  @Input() type: string;
-  @Input() header: string;
-  @Input() content: any;
+  @Input() section: Section;
 
   @Output() hasBeenSelected = new EventEmitter<any>();
 
   public selected() {
-    console.log(this.header);
-    this.hasBeenSelected.emit(this.header);
+    console.log(`Selected :  ${this.section.header}`);
+    this.hasBeenSelected.emit(this.section);
   }
   constructor() {}
 
