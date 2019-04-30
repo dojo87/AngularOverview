@@ -1,5 +1,7 @@
 import { BrowserModule } from '@angular/platform-browser';
 import { NgModule } from '@angular/core';
+import { HttpClientModule } from '@angular/common/http';
+import { FormsModule } from '@angular/forms';
 
 import { AppRoutingModule } from './app-routing.module';
 import { BrowserAnimationsModule } from '@angular/platform-browser/animations';
@@ -12,7 +14,8 @@ import {
   MatListModule,
   MatGridListModule,
   MatCardModule,
-  MatMenuModule
+  MatMenuModule,
+  MatProgressSpinnerModule
 } from '@angular/material';
 
 import { MainPageComponent } from './main-page/main-page.component';
@@ -33,7 +36,9 @@ import { SectionEngineComponent } from './section-engine/section-engine.componen
     BrowserModule,
     AppRoutingModule,
     BrowserAnimationsModule,
+    HttpClientModule,
     LayoutModule,
+    FormsModule,
     MatToolbarModule,
     MatButtonModule,
     MatSidenavModule,
@@ -41,7 +46,8 @@ import { SectionEngineComponent } from './section-engine/section-engine.componen
     MatListModule,
     MatGridListModule,
     MatCardModule,
-    MatMenuModule
+    MatMenuModule,
+    MatProgressSpinnerModule
   ],
   providers: [],
   bootstrap: [AppComponent]

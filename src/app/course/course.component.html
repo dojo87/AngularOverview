@@ -1,15 +1,20 @@
-<mat-card>
-  <mat-card-title>
-    {{ (course$ | async).title }} - {{ selectedSection.header }}
-  </mat-card-title>
-  <mat-card-content>
-    <div>
-      <section *ngFor="let section of (course$ | async).sections">
-        <app-section-engine
-          [section]="section"
-          (hasBeenSelected)="sectionSelected($event)"
-        ></app-section-engine>
-      </section>
-    </div>
-  </mat-card-content>
-</mat-card>
+<ng-container *ngIf="course$ | async as course; else loading">
+  <mat-card>
+    <mat-card-title>
+      {{ course.title }} - {{ selectedSection.header }}
+    </mat-card-title>
+    <mat-card-content>
+      <div>
+        <section *ngFor="let section of course.sections">
+          <app-section-engine
+            [section]="section"
+            (hasBeenSelected)="sectionSelected($event)"
+          ></app-section-engine>
+        </section>
+      </div>
+    </mat-card-content>
+  </mat-card>
+</ng-container>
+<ng-template #loading>
+  <mat-card> <mat-spinner class="spinner"></mat-spinner> </mat-card>
+</ng-template>

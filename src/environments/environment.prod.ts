@@ -1,3 +1,8 @@
 export const environment = {
-  production: true
+  production: true,
+  config: {
+    api: {
+      courses: 'http://localhost:3000/courses'
+    }
+  }
 };
