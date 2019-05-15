@@ -1,15 +1,51 @@
-<div (dblclick)="selected()">
-  <div [ngSwitch]="section.type.toUpperCase()">
-    <div *ngSwitchCase="'IMAGE'">
-      <img
-        src="{{ section.content.url }}"
-        alt="{{ section.content.alt }}"
-        title="{{ section.header }}"
-      />
-    </div>
-    <div *ngSwitchDefault class="mat-typography">
-      <mat-card-subtitle>{{ section.header }}</mat-card-subtitle>
-      <p>{{ section.content.toString() }}</p>
+<div (appClickOutside)="saveSection()" class="wrapper">
+  <div
+    (click)="edit()"
+    class="single-section"
+    [ngClass]="{ 'view-hide': section != null && section.inEditMode == true }"
+  >
+    <div [ngSwitch]="section.type.toUpperCase()" class="container">
+      <div *ngSwitchCase="'IMAGE'">
+        <img
+          src="{{ section.content.url }}"
+          alt="{{ section.content.alt }}"
+          title="{{ section.header }}"
+        />
+      </div>
+      <div *ngSwitchDefault class="mat-typography">
+        <mat-card-subtitle>{{ section.header }}</mat-card-subtitle>
+        <p>{{ section.content.toString() }}</p>
+      </div>
     </div>
   </div>
+
+  <form
+    [formGroup]="sectionForm"
+    novalidate
+    (ngSubmit)="saveSection()"
+    *ngIf="section && section.inEditMode == true"
+  >
+    <mat-card class="section-edit">
+      <mat-card-content>
+        <div class="row">
+          <div class="col">
+            <mat-form-field class="full-width">
+              <input matInput placeholder="Header" formControlName="header" />
+            </mat-form-field>
+          </div>
+        </div>
+        <div class="row">
+          <div class="col">
+            <mat-form-field class="full-width">
+              <input
+                matInput
+                placeholder="What to write..."
+                formControlName="content"
+              />
+            </mat-form-field>
+          </div>
+        </div>
+      </mat-card-content>
+    </mat-card>
+  </form>
 </div>

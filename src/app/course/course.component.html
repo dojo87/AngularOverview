@@ -1,15 +1,31 @@
-<ng-container *ngIf="course$ | async as course; else loading">
+<ng-container *ngIf="course; else loading">
   <mat-card>
     <mat-card-title>
-      {{ course.title }} - {{ selectedSection.header }}
+      {{ course.title }}
     </mat-card-title>
     <mat-card-content>
       <div>
         <section *ngFor="let section of course.sections">
-          <app-section-engine
-            [section]="section"
-            (hasBeenSelected)="sectionSelected($event)"
-          ></app-section-engine>
+          <div class="section-container">
+            <div
+              class="floating-menu"
+              [ngClass]="{
+                'in-edit-mode': section.inEditMode
+              }"
+            >
+              <button
+                mat-icon-button
+                color="primary"
+                (click)="addSection(section)"
+              >
+                <mat-icon aria-label="Insert section">note_add</mat-icon>
+              </button>
+            </div>
+            <app-section-engine
+              [section]="section"
+              (hasBeenSelected)="sectionSelected($event)"
+            ></app-section-engine>
+          </div>
         </section>
       </div>
     </mat-card-content>

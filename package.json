@@ -4,6 +4,7 @@
   "scripts": {
     "ng": "ng",
     "start": "ng serve",
+    "mock-backend": "json-server --watch .\\mockApi\\courses.js --delay 1000",
     "build": "ng build",
     "test": "ng test",
     "lint": "ng lint",

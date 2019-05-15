@@ -1,5 +1,13 @@
-import { Component, OnInit, Input, Output, EventEmitter } from '@angular/core';
+import {
+  Component,
+  OnInit,
+  Input,
+  Output,
+  EventEmitter,
+  ViewChild
+} from '@angular/core';
 import { Section } from '../model/section';
+import { FormBuilder, Validators } from '@angular/forms';
 
 @Component({
   selector: 'app-section-engine',
@@ -8,14 +16,29 @@ import { Section } from '../model/section';
 })
 export class SectionEngineComponent implements OnInit {
   @Input() section: Section;
+  @Output() hasBeenSelected = new EventEmitter<Section>();
 
-  @Output() hasBeenSelected = new EventEmitter<any>();
+  constructor(private fb: FormBuilder) {}
 
-  public selected() {
-    console.log(`Selected :  ${this.section.header}`);
+  public sectionForm = this.fb.group({
+    header: [null, Validators.required],
+    content: [null, Validators.required]
+  });
+
+  public edit() {
     this.hasBeenSelected.emit(this.section);
+    this.section.inEditMode = true;
   }
-  constructor() {}
 
-  ngOnInit() {}
+  public saveSection() {
+    if (this.section && this.section.inEditMode === true) {
+      const section = this.sectionForm.value as Section;
+      Object.assign(this.section, section);
+      this.section.inEditMode = false;
+    }
+  }
+
+  ngOnInit() {
+    this.sectionForm.patchValue(this.section);
+  }
 }

@@ -11,7 +11,7 @@ import { Section } from '../model/section';
   styleUrls: ['./course.component.scss']
 })
 export class CourseComponent implements OnInit {
-  public course$: Observable<Course>;
+  public course: Course;
 
   public selectedSection: Section;
 
@@ -26,12 +26,30 @@ export class CourseComponent implements OnInit {
 
   public sectionSelected(section: Section) {
     this.selectedSection = section;
+    this.course.sections.forEach(s => (s.inEditMode = false));
+  }
+
+  public addSection(insertBeforeSection: Section) {
+    if (insertBeforeSection) {
+      const index = this.course.sections.findIndex(
+        s => s === insertBeforeSection
+      );
+      console.log('insert before: ' + index);
+      const newSection: Section = {
+        header: '',
+        type: 'Text',
+        content: ''
+      };
+      this.course.sections.splice(index, 0, newSection);
+      newSection.inEditMode = true;
+    }
   }
 
   loadCourse() {
     this.route.params.subscribe(params => {
       const slug: string = params.slug;
-      this.course$ = this.courseService.getCourse(slug);
+      this.course = null;
+      this.courseService.getCourse(slug).subscribe(c => (this.course = c));
     });
   }
 }

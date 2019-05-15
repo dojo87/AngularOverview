@@ -1,3 +1,17 @@
 .spinner {
   margin: 0 auto;
 }
+.section-container {
+  &:hover {
+    .floating-menu {
+      display: block;
+      float: right;
+    }
+    .floating-menu.in-edit-mode {
+      display: none;
+    }
+  }
+  .floating-menu {
+    display: none;
+  }
+}
