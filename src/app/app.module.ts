@@ -12,11 +12,12 @@ import {
   MatButtonModule,
   MatSidenavModule,
   MatIconModule,
-  MatListModule
+  MatListModule, MatGridListModule, MatCardModule, MatMenuModule
 } from '@angular/material';
+import { MainPageComponent } from './main-page/main-page.component';
 
 @NgModule({
-  declarations: [AppComponent, NavigationComponent],
+  declarations: [AppComponent, NavigationComponent, MainPageComponent],
   imports: [
     BrowserModule,
     AppRoutingModule,
@@ -27,7 +28,10 @@ import {
     MatButtonModule,
     MatSidenavModule,
     MatIconModule,
-    MatListModule
+    MatListModule,
+    MatGridListModule,
+    MatCardModule,
+    MatMenuModule
   ],
   providers: [],
   bootstrap: [AppComponent]
