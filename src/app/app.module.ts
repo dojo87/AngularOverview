@@ -16,12 +16,19 @@ import {
   MatListModule,
   MatGridListModule,
   MatCardModule,
-  MatMenuModule
+  MatMenuModule,
+  MatProgressSpinnerModule
 } from '@angular/material';
 import { MainPageComponent } from './main-page/main-page.component';
+import { CourseComponent } from './course/course.component';
 
 @NgModule({
-  declarations: [AppComponent, NavigationComponent, MainPageComponent],
+  declarations: [
+    AppComponent,
+    NavigationComponent,
+    MainPageComponent,
+    CourseComponent
+  ],
   imports: [
     BrowserModule,
     HttpClientModule,
@@ -36,7 +43,8 @@ import { MainPageComponent } from './main-page/main-page.component';
     MatListModule,
     MatGridListModule,
     MatCardModule,
-    MatMenuModule
+    MatMenuModule,
+    MatProgressSpinnerModule
   ],
   providers: [],
   bootstrap: [AppComponent]

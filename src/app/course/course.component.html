@@ -1,0 +1,20 @@
+<ng-container *ngIf="course; else loading">
+  <mat-card>
+    <mat-card-title>
+      {{ course.title }}
+    </mat-card-title>
+    <mat-card-content>
+      <section *ngFor="let section of course.sections">
+        <mat-card-subtitle>{{ section.header }}</mat-card-subtitle>
+        <p>
+          {{ section.content }}
+        </p>
+      </section>
+    </mat-card-content>
+  </mat-card>
+</ng-container>
+<ng-template #loading>
+  <mat-card>
+    <mat-spinner class="spinner"></mat-spinner>
+  </mat-card>
+</ng-template>
