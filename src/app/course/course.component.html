@@ -1,14 +1,14 @@
 <ng-container *ngIf="course; else loading">
   <mat-card>
     <mat-card-title>
-      {{ course.title }}
+      {{ course.title }} {{ selectedSection?.header }}
     </mat-card-title>
     <mat-card-content>
       <section *ngFor="let section of course.sections">
-        <mat-card-subtitle>{{ section.header }}</mat-card-subtitle>
-        <p>
-          {{ section.content }}
-        </p>
+        <app-section
+          [section]="section"
+          (selected)="onSectionSelected($event)"
+        ></app-section>
       </section>
     </mat-card-content>
   </mat-card>

@@ -3,6 +3,7 @@ import { Course } from '../model/course';
 import { ActivatedRoute } from '@angular/router';
 import { CourseService } from '../services/course.service';
 import { Subscription } from 'rxjs';
+import { Section } from '../model/section';
 
 @Component({
   selector: 'app-course',
@@ -13,11 +14,16 @@ export class CourseComponent implements OnInit, OnDestroy {
   course: Course;
 
   private subSink: Subscription[] = [];
+  public selectedSection: Section;
 
   constructor(
     private route: ActivatedRoute,
     private courseService: CourseService
   ) {}
+
+  public onSectionSelected(section: Section) {
+    this.selectedSection = section;
+  }
 
   ngOnInit() {
     this.subSink.push(

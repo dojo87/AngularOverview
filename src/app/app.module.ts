@@ -4,7 +4,7 @@ import { HttpClientModule } from '@angular/common/http';
 
 import { AppRoutingModule } from './app-routing.module';
 import { AppComponent } from './app.component';
-import { FormsModule } from '@angular/forms';
+import { FormsModule, ReactiveFormsModule } from '@angular/forms';
 import { BrowserAnimationsModule } from '@angular/platform-browser/animations';
 import { NavigationComponent } from './navigation/navigation.component';
 import { LayoutModule } from '@angular/cdk/layout';
@@ -17,17 +17,22 @@ import {
   MatGridListModule,
   MatCardModule,
   MatMenuModule,
-  MatProgressSpinnerModule
+  MatProgressSpinnerModule,
+  MatInputModule,
+  MatSelectModule,
+  MatRadioModule
 } from '@angular/material';
 import { MainPageComponent } from './main-page/main-page.component';
 import { CourseComponent } from './course/course.component';
+import { SectionComponent } from './course/section/section.component';
 
 @NgModule({
   declarations: [
     AppComponent,
     NavigationComponent,
     MainPageComponent,
-    CourseComponent
+    CourseComponent,
+    SectionComponent
   ],
   imports: [
     BrowserModule,
@@ -44,7 +49,11 @@ import { CourseComponent } from './course/course.component';
     MatGridListModule,
     MatCardModule,
     MatMenuModule,
-    MatProgressSpinnerModule
+    MatProgressSpinnerModule,
+    MatInputModule,
+    MatSelectModule,
+    MatRadioModule,
+    ReactiveFormsModule
   ],
   providers: [],
   bootstrap: [AppComponent]
