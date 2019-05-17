@@ -9,9 +9,14 @@ import {
   MatToolbarModule
 } from '@angular/material';
 
-import { Component } from '@angular/core';
+import { Component, Injectable } from '@angular/core';
 import { AppRoutingModule } from '../app-routing.module';
 import { NavigationComponent } from './navigation.component';
+
+import { of as observableOf, Observable } from 'rxjs';
+import { Course } from '../model/course';
+import { CourseService } from '../services/course.service';
+import { doesNotThrow } from 'assert';
 
 @Component({
   selector: 'app-main-page',
@@ -21,6 +26,21 @@ import { NavigationComponent } from './navigation.component';
   styleUrls: []
 })
 export class MainPageComponent {}
+
+export class CourseServiceMock {
+  constructor() {}
+
+  public getCourse(slug: string): Observable<Course> {
+    return observableOf(new Course('slug', 'title', 'author'));
+  }
+
+  public getCourses(): Observable<Course[]> {
+    return observableOf([
+      new Course('slug1', 'title1', 'author1'),
+      new Course('slug2', 'title2', 'author2')
+    ]);
+  }
+}
 
 describe('NavigationComponent', () => {
   let component: NavigationComponent;
@@ -38,7 +58,8 @@ describe('NavigationComponent', () => {
         MatSidenavModule,
         MatToolbarModule,
         AppRoutingModule
-      ]
+      ],
+      providers: [{ provide: CourseService, useValue: new CourseServiceMock() }]
     }).compileComponents();
   }));
 
@@ -48,7 +69,25 @@ describe('NavigationComponent', () => {
     fixture.detectChanges();
   });
 
+  afterEach(() => {
+    if (fixture.nativeElement && 'remove' in fixture.nativeElement) {
+      (fixture.nativeElement as HTMLElement).remove();
+    }
+  });
+
   it('should compile', () => {
     expect(component).toBeTruthy();
+  });
+
+  it('should render the menu', done => {
+    fixture.detectChanges();
+    const compiled = fixture.debugElement.nativeElement;
+    fixture.whenStable().then(() => {
+      const allLinks = compiled.querySelectorAll('a');
+      expect(allLinks.length).toEqual(2);
+      expect(allLinks[0].textContent).toContain('title1');
+      expect(allLinks[1].textContent).toContain('title2');
+      done();
+    });
   });
 });

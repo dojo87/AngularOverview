@@ -1,7 +1,8 @@
 import { Injectable } from '@angular/core';
 import { Course } from '../model/course';
-import { Observable } from 'rxjs';
+import { Observable, of } from 'rxjs';
 import { HttpClient } from '@angular/common/http';
+import { catchError } from 'rxjs/operators';
 
 @Injectable({
   providedIn: 'root'
@@ -12,10 +13,20 @@ export class CourseService {
   private api = 'http://localhost:3000/courses';
 
   public getCourse(slug: string): Observable<Course> {
-    return this.http.get<Course>(this.api + '/' + slug);
+    return this.http.get<Course>(this.api + '/' + slug).pipe(
+      catchError(e => {
+        console.log(`Error on getCourse(${slug}): ${e.message}`);
+        return of(null);
+      })
+    );
   }
 
   public getCourses(): Observable<Course[]> {
-    return this.http.get<Course[]>(this.api);
+    return this.http.get<Course[]>(this.api).pipe(
+      catchError(e => {
+        console.log('Error on getCourses: ' + e.message);
+        return of([]);
+      })
+    );
   }
 }
