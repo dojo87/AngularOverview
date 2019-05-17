@@ -6,10 +6,21 @@ import {
   MatIconModule,
   MatListModule,
   MatSidenavModule,
-  MatToolbarModule,
+  MatToolbarModule
 } from '@angular/material';
 
+import { Component } from '@angular/core';
+import { AppRoutingModule } from '../app-routing.module';
 import { NavigationComponent } from './navigation.component';
+
+@Component({
+  selector: 'app-main-page',
+  template: `
+    <div>MainPage Mock</div>
+  `,
+  styleUrls: []
+})
+export class MainPageComponent {}
 
 describe('NavigationComponent', () => {
   let component: NavigationComponent;
@@ -17,7 +28,7 @@ describe('NavigationComponent', () => {
 
   beforeEach(async(() => {
     TestBed.configureTestingModule({
-      declarations: [NavigationComponent],
+      declarations: [NavigationComponent, MainPageComponent],
       imports: [
         NoopAnimationsModule,
         LayoutModule,
@@ -26,6 +37,7 @@ describe('NavigationComponent', () => {
         MatListModule,
         MatSidenavModule,
         MatToolbarModule,
+        AppRoutingModule
       ]
     }).compileComponents();
   }));
