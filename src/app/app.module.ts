@@ -1,5 +1,6 @@
 import { BrowserModule } from '@angular/platform-browser';
 import { NgModule } from '@angular/core';
+import { HttpClientModule } from '@angular/common/http';
 
 import { AppRoutingModule } from './app-routing.module';
 import { AppComponent } from './app.component';
@@ -12,7 +13,10 @@ import {
   MatButtonModule,
   MatSidenavModule,
   MatIconModule,
-  MatListModule, MatGridListModule, MatCardModule, MatMenuModule
+  MatListModule,
+  MatGridListModule,
+  MatCardModule,
+  MatMenuModule
 } from '@angular/material';
 import { MainPageComponent } from './main-page/main-page.component';
 
@@ -20,6 +24,7 @@ import { MainPageComponent } from './main-page/main-page.component';
   declarations: [AppComponent, NavigationComponent, MainPageComponent],
   imports: [
     BrowserModule,
+    HttpClientModule,
     AppRoutingModule,
     FormsModule,
     BrowserAnimationsModule,
