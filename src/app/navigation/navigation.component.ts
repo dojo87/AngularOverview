@@ -10,13 +10,11 @@ import { Course } from '../model/course';
   templateUrl: './navigation.component.html',
   styleUrls: ['./navigation.component.scss']
 })
-export class NavigationComponent implements OnInit, OnDestroy {
+export class NavigationComponent implements OnInit {
   isHandset$: Observable<boolean> = this.breakpointObserver
     .observe(Breakpoints.Handset)
     .pipe(map(result => result.matches));
 
-  courses: Course[];
-  coursesSubscription: Subscription; // Consequence of Approach I
   courses$: Observable<Course[]>;
 
   constructor(
@@ -25,19 +23,6 @@ export class NavigationComponent implements OnInit, OnDestroy {
   ) {}
 
   ngOnInit(): void {
-    // Approach I
-    this.coursesSubscription = this.courseService
-      .getCourses()
-      .subscribe(courses => {
-        this.courses = courses;
-      });
-
-    // Approach II
     this.courses$ = this.courseService.getCourses();
-  }
-
-  // Consequence of Approach I
-  ngOnDestroy(): void {
-    this.coursesSubscription.unsubscribe();
   }
 }
