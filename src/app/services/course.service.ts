@@ -1,6 +1,6 @@
 import { Injectable } from '@angular/core';
 import { Course } from '../model/course';
-import { Observable, of } from 'rxjs';
+import { Observable, of, throwError } from 'rxjs';
 import { HttpClient } from '@angular/common/http';
 import { catchError } from 'rxjs/operators';
 
@@ -16,7 +16,7 @@ export class CourseService {
     return this.http.get<Course>(this.api + '/' + slug).pipe(
       catchError(e => {
         console.log(`Error on getCourse(${slug}): ${e.message}`);
-        return of(null);
+        return throwError(new Error('Cant get that course...'));
       })
     );
   }
@@ -25,7 +25,7 @@ export class CourseService {
     return this.http.get<Course[]>(this.api).pipe(
       catchError(e => {
         console.log('Error on getCourses: ' + e.message);
-        return of([]);
+        return throwError(new Error('Cant get them courses...'));
       })
     );
   }

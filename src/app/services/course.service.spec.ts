@@ -37,7 +37,7 @@ describe('CourseService', () => {
     expect(httpClientSpy.get.calls.count()).toBe(1);
   });
 
-  it('should return empty list on error', done => {
+  it('should return an obscure error when failed', done => {
     const service: CourseService = TestBed.get(CourseService);
 
     httpClientSpy.get.and.returnValue(
@@ -45,15 +45,21 @@ describe('CourseService', () => {
         new HttpErrorResponse({
           error: 'Some error',
           status: 500,
+          url: 'http://localhost:3000/courses',
           statusText: 'Internal Error'
         })
       )
     );
 
-    service.getCourses().subscribe(courses => {
-      expect(courses).toBeDefined();
-      expect(courses.length).toBe(0);
-      done();
-    });
+    service.getCourses().subscribe(
+      courses => {
+        fail('Expected error');
+        done();
+      },
+      err => {
+        expect(err.message).toBe('Cant get them courses...');
+        done();
+      }
+    );
   });
 });
