@@ -1,6 +1,7 @@
 import { Injectable } from '@angular/core';
 import { Course } from '../model/course';
 import { Section } from '../model/section';
+import { of as observableOf, Observable } from 'rxjs';
 
 @Injectable({
   providedIn: 'root'
@@ -68,11 +69,13 @@ export class CourseService {
     return new Section(header, 'TEXT', content.join());
   }
 
-  public getCourse(slug: string): Course {
-    return this.courses.find(c => c.slug === slug);
+  public getCourse(slug: string): Observable<Course> {
+    return observableOf(this.courses.find(c => c.slug === slug));
   }
 
-  public getCourses(): Course[] {
-    return this.courses.map<Course>(c => new Course(c.slug, c.title, c.author));
+  public getCourses(): Observable<Course[]> {
+    return observableOf(
+      this.courses.map<Course>(c => new Course(c.slug, c.title, c.author))
+    );
   }
 }
