@@ -1,15 +1,1 @@
-<h1>Bindowanie Dwukierunkowe</h1>
-<input [(ngModel)]="title" type="text" />
-<h1>Interpolacja</h1>
-{{ title }}
-<h1>Pipe rurki</h1>
-{{ title | uppercase }}
-
-<h1>Dyrektywy atrybutów jak i bindowanie jednokierunkowe</h1>
-<div class="indicator" [ngClass]="title"></div>
-
-<h1>Dyrektywy strukturalne</h1>
-<div *ngIf="title != 'siwykoperkowyroz'">
-  <button (click)="change()">Zmien na SiwyKoperkowy</button>
-</div>
-<router-outlet></router-outlet>
+<app-navigation></app-navigation>
