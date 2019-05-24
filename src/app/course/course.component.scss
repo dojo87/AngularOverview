@@ -1,3 +1,13 @@
 .spinner {
   margin: 0 auto;
 }
+
+mat-card-actions {
+  display: grid;
+  justify-content: right;
+}
+
+:host {
+  margin: 30px;
+  display: block;
+}

@@ -10,16 +10,34 @@
             >
               Header is <strong>required</strong>
             </mat-error>
+            <mat-error
+              *ngIf="sectionForm.controls['header'].hasError('maxlength')"
+            >
+              Keep headers short.
+            </mat-error>
           </mat-form-field>
         </div>
         <div class="col">
-          <mat-form-field class="full-width">
-            <mat-select placeholder="Type" formControlName="type">
+          <mat-button-toggle-group formControlName="type" matInput>
+            <mat-button-toggle
+              *ngFor="let type of types"
+              [value]="type.id"
+              matInput
+            >
+              {{ type.label }}
+            </mat-button-toggle>
+          </mat-button-toggle-group>
+          <!-- <mat-radio-group  formControlName="type">
+              <mat-radio-button *ngFor="let type of types" [value]="type.id">
+                {{ type.label }}
+              </mat-radio-button>
+            </mat-radio-group> -->
+          <!--  <mat-form-field class="full-width">
+              <mat-select placeholder="Type" formControlName="type">
               <mat-option *ngFor="let type of types" [value]="type.id">
                 {{ type.label }}
               </mat-option>
-            </mat-select>
-          </mat-form-field>
+            </mat-select>  </mat-form-field>-->
         </div>
       </div>
 
@@ -27,6 +45,7 @@
         <div class="col">
           <mat-form-field class="full-width">
             <textarea
+              cdkTextareaAutosize
               matInput
               placeholder="Content"
               formControlName="content"

@@ -9,6 +9,8 @@ import {
   MatSelectModule
 } from '@angular/material';
 
+import { MatButtonToggleModule } from '@angular/material/button-toggle';
+
 import { SectionEditComponent } from './section-edit.component';
 
 describe('SectionEditComponent', () => {
@@ -25,7 +27,8 @@ describe('SectionEditComponent', () => {
         MatCardModule,
         MatInputModule,
         MatRadioModule,
-        MatSelectModule
+        MatSelectModule,
+        MatButtonToggleModule
       ]
     }).compileComponents();
   }));

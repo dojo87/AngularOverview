@@ -2,7 +2,7 @@
   width: 100%;
 }
 
-.shipping-card {
+.section-edit {
   min-width: 120px;
   margin: 20px auto;
 }
@@ -24,4 +24,14 @@
 
 .col:last-child {
   margin-right: 0;
+}
+
+textarea.mat-input-element {
+  box-sizing: content-box;
+}
+
+mat-card-actions {
+  display: grid;
+  justify-content: right;
+  padding: 10px;
 }

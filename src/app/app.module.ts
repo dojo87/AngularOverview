@@ -27,6 +27,8 @@ import { CourseComponent } from './course/course.component';
 import { SectionComponent } from './course/section/section.component';
 import { SectionEditComponent } from './course/section-edit/section-edit.component';
 
+import { MatButtonToggleModule } from '@angular/material/button-toggle';
+
 @NgModule({
   declarations: [
     AppComponent,
@@ -55,6 +57,7 @@ import { SectionEditComponent } from './course/section-edit/section-edit.compone
     MatInputModule,
     MatSelectModule,
     MatRadioModule,
+    MatButtonToggleModule,
     ReactiveFormsModule
   ],
   providers: [],

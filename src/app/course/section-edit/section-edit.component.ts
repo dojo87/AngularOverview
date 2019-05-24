@@ -27,9 +27,6 @@ export class SectionEditComponent implements OnInit {
   ngOnInit(): void {
     if (this.section) {
       this.sectionForm.patchValue(this.section);
-      this.sectionForm.value.type = this.types.find(
-        t => t.id === this.section.type
-      );
     }
   }
 
