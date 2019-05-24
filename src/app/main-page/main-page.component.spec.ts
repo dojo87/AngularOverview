@@ -6,7 +6,7 @@ import {
   MatCardModule,
   MatGridListModule,
   MatIconModule,
-  MatMenuModule,
+  MatMenuModule
 } from '@angular/material';
 
 import { MainPageComponent } from './main-page.component';
@@ -25,7 +25,7 @@ describe('MainPageComponent', () => {
         MatCardModule,
         MatGridListModule,
         MatIconModule,
-        MatMenuModule,
+        MatMenuModule
       ]
     }).compileComponents();
   }));
@@ -34,6 +34,12 @@ describe('MainPageComponent', () => {
     fixture = TestBed.createComponent(MainPageComponent);
     component = fixture.componentInstance;
     fixture.detectChanges();
+  });
+
+  afterEach(() => {
+    if (fixture.nativeElement && 'remove' in fixture.nativeElement) {
+      (fixture.nativeElement as HTMLElement).remove();
+    }
   });
 
   it('should compile', () => {

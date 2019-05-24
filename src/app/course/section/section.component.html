@@ -1,4 +1,4 @@
-<div (click)="sectionSelected()">
+<div (click)="sectionSelected()" *ngIf="section">
   <ng-container *ngIf="section.inEditMode != true; else editSection">
     <ng-container [ngSwitch]="section.type">
       <ng-container *ngSwitchCase="'IMAGE'">

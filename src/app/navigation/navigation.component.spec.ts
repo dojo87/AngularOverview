@@ -9,23 +9,12 @@ import {
   MatToolbarModule
 } from '@angular/material';
 
-import { Component, Injectable } from '@angular/core';
-import { AppRoutingModule } from '../app-routing.module';
 import { NavigationComponent } from './navigation.component';
 
 import { of as observableOf, Observable } from 'rxjs';
 import { Course } from '../model/course';
 import { CourseService } from '../services/course.service';
-import { doesNotThrow } from 'assert';
-
-@Component({
-  selector: 'app-main-page',
-  template: `
-    <div>MainPage Mock</div>
-  `,
-  styleUrls: []
-})
-export class MainPageComponent {}
+import { RouterTestingModule } from '@angular/router/testing';
 
 export class CourseServiceMock {
   constructor() {}
@@ -48,7 +37,7 @@ describe('NavigationComponent', () => {
 
   beforeEach(async(() => {
     TestBed.configureTestingModule({
-      declarations: [NavigationComponent, MainPageComponent],
+      declarations: [NavigationComponent],
       imports: [
         NoopAnimationsModule,
         LayoutModule,
@@ -57,7 +46,7 @@ describe('NavigationComponent', () => {
         MatListModule,
         MatSidenavModule,
         MatToolbarModule,
-        AppRoutingModule
+        RouterTestingModule
       ],
       providers: [{ provide: CourseService, useValue: new CourseServiceMock() }]
     }).compileComponents();

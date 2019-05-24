@@ -6,7 +6,7 @@ import {
   MatCardModule,
   MatInputModule,
   MatRadioModule,
-  MatSelectModule,
+  MatSelectModule
 } from '@angular/material';
 
 import { SectionEditComponent } from './section-edit.component';
@@ -17,7 +17,7 @@ describe('SectionEditComponent', () => {
 
   beforeEach(async(() => {
     TestBed.configureTestingModule({
-      declarations: [ SectionEditComponent ],
+      declarations: [SectionEditComponent],
       imports: [
         NoopAnimationsModule,
         ReactiveFormsModule,
@@ -25,7 +25,7 @@ describe('SectionEditComponent', () => {
         MatCardModule,
         MatInputModule,
         MatRadioModule,
-        MatSelectModule,
+        MatSelectModule
       ]
     }).compileComponents();
   }));
@@ -34,6 +34,12 @@ describe('SectionEditComponent', () => {
     fixture = TestBed.createComponent(SectionEditComponent);
     component = fixture.componentInstance;
     fixture.detectChanges();
+  });
+
+  afterEach(() => {
+    if (fixture.nativeElement && 'remove' in fixture.nativeElement) {
+      (fixture.nativeElement as HTMLElement).remove();
+    }
   });
 
   it('should compile', () => {

@@ -25,10 +25,12 @@ export class SectionEditComponent implements OnInit {
   constructor(private fb: FormBuilder) {}
 
   ngOnInit(): void {
-    this.sectionForm.patchValue(this.section);
-    this.sectionForm.value.type = this.types.find(
-      t => t.id === this.section.type
-    );
+    if (this.section) {
+      this.sectionForm.patchValue(this.section);
+      this.sectionForm.value.type = this.types.find(
+        t => t.id === this.section.type
+      );
+    }
   }
 
   onSubmit() {
