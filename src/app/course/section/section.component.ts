@@ -16,5 +16,13 @@ export class SectionComponent implements OnInit {
   public sectionSelected() {
     this.selected.emit(this.section);
   }
+
+  public saveSection(section: Section) {
+    console.log(`[${this.section.type}] ${this.section.header} added`);
+    this.section.header = section.header;
+    this.section.type = section.type;
+    this.section.content = section.content;
+    this.section.inEditMode = false;
+  }
   ngOnInit() {}
 }

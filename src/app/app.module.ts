@@ -25,6 +25,7 @@ import {
 import { MainPageComponent } from './main-page/main-page.component';
 import { CourseComponent } from './course/course.component';
 import { SectionComponent } from './course/section/section.component';
+import { SectionEditComponent } from './course/section-edit/section-edit.component';
 
 @NgModule({
   declarations: [
@@ -32,7 +33,8 @@ import { SectionComponent } from './course/section/section.component';
     NavigationComponent,
     MainPageComponent,
     CourseComponent,
-    SectionComponent
+    SectionComponent,
+    SectionEditComponent
   ],
   imports: [
     BrowserModule,

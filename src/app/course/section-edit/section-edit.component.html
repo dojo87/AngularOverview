@@ -1,0 +1,47 @@
+<form [formGroup]="sectionForm" novalidate (ngSubmit)="onSubmit()">
+  <mat-card class="section-edit">
+    <mat-card-content>
+      <div class="row">
+        <div class="col">
+          <mat-form-field class="full-width">
+            <input matInput placeholder="Header" formControlName="header" />
+            <mat-error
+              *ngIf="sectionForm.controls['header'].hasError('required')"
+            >
+              Header is <strong>required</strong>
+            </mat-error>
+          </mat-form-field>
+        </div>
+        <div class="col">
+          <mat-form-field class="full-width">
+            <mat-select placeholder="Type" formControlName="type">
+              <mat-option *ngFor="let type of types" [value]="type.id">
+                {{ type.label }}
+              </mat-option>
+            </mat-select>
+          </mat-form-field>
+        </div>
+      </div>
+
+      <div class="row">
+        <div class="col">
+          <mat-form-field class="full-width">
+            <textarea
+              matInput
+              placeholder="Content"
+              formControlName="content"
+            ></textarea>
+            <mat-error
+              *ngIf="sectionForm.controls['content'].hasError('required')"
+            >
+              Content is <strong>required</strong>
+            </mat-error>
+          </mat-form-field>
+        </div>
+      </div>
+    </mat-card-content>
+    <mat-card-actions>
+      <button mat-raised-button color="primary" type="submit">Submit</button>
+    </mat-card-actions>
+  </mat-card>
+</form>

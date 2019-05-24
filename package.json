@@ -3,7 +3,7 @@
   "version": "0.0.0",
   "scripts": {
     "ng": "ng",
-    "mock-backend": "json-server --watch .\\mockApi\\courses.js --delay 1000",
+    "mock-backend": "tsc mockApi/courses.ts --lib es2015 & json-server --watch .\\mockApi\\courses.js --delay 1000",
     "start": "ng serve",
     "build": "ng build",
     "test": "ng test",

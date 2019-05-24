@@ -23,6 +23,21 @@ export class CourseComponent implements OnInit, OnDestroy {
 
   public onSectionSelected(section: Section) {
     this.selectedSection = section;
+    this.course.sections.forEach(s => (s.inEditMode = false));
+    section.inEditMode = true;
+  }
+
+  public insertSection(section: Section | null) {
+    const newSection = new Section('', 'TEXT', '');
+
+    if (section) {
+      const insertAfterIndex = this.course.sections.indexOf(section);
+      this.course.sections.splice(insertAfterIndex, 0, newSection);
+    } else {
+      this.course.sections.push(newSection);
+    }
+
+    this.onSectionSelected(newSection);
   }
 
   ngOnInit() {

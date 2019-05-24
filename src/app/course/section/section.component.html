@@ -1,6 +1,25 @@
 <div (click)="sectionSelected()">
-  <mat-card-subtitle>{{ section.header }}</mat-card-subtitle>
-  <p>
-    {{ section.content }}
-  </p>
+  <ng-container *ngIf="section.inEditMode != true; else editSection">
+    <ng-container [ngSwitch]="section.type">
+      <ng-container *ngSwitchCase="'IMAGE'">
+        <img
+          [title]="section.header"
+          [alt]="section.header"
+          [src]="section.content"
+        />
+      </ng-container>
+      <ng-container *ngSwitchDefault>
+        <mat-card-subtitle>{{ section.header }}</mat-card-subtitle>
+        <p>
+          {{ section.content }}
+        </p>
+      </ng-container>
+    </ng-container>
+  </ng-container>
+  <ng-template #editSection>
+    <app-section-edit
+      [section]="section"
+      (sectionSaved)="saveSection($event)"
+    ></app-section-edit>
+  </ng-template>
 </div>

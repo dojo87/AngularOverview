@@ -11,6 +11,11 @@ class Api {
           type: 'TEXT',
           content: 'Przyśpieszony kurs nie pozwala na zbytnie lanie wody'
         },
+        {
+          header: 'Logo',
+          type: 'IMAGE',
+          content: 'https://angular.io/assets/images/logos/angular/angular.png'
+        },
         this.getMockSection('Trochę rozwiniemy', 4),
         { header: 'Zakończenie', type: 'TEXT', content: 'A więc już kończymy' }
       ]

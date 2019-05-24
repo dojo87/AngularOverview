@@ -1,16 +1,23 @@
 <ng-container *ngIf="course; else loading">
   <mat-card>
-    <mat-card-title>
-      {{ course.title }} {{ selectedSection?.header }}
-    </mat-card-title>
-    <mat-card-content>
-      <section *ngFor="let section of course.sections">
-        <app-section
-          [section]="section"
-          (selected)="onSectionSelected($event)"
-        ></app-section>
-      </section>
-    </mat-card-content>
+    <article>
+      <mat-card-title>
+        {{ course.title }} {{ selectedSection?.header }}
+      </mat-card-title>
+      <mat-card-content>
+        <section *ngFor="let section of course.sections">
+          <app-section
+            [section]="section"
+            (selected)="onSectionSelected($event)"
+          ></app-section>
+        </section>
+      </mat-card-content>
+      <mat-card-actions>
+        <button (click)="insertSection()" mat-raised-button color="primary">
+          Insert Section
+        </button>
+      </mat-card-actions>
+    </article>
   </mat-card>
 </ng-container>
 <ng-template #loading>
