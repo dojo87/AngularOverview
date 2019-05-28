@@ -39,7 +39,7 @@ import { MatButtonToggleModule } from '@angular/material/button-toggle';
     SectionEditComponent
   ],
   imports: [
-    BrowserModule,
+    BrowserModule.withServerTransition({ appId: 'serverApp' }),
     HttpClientModule,
     AppRoutingModule,
     FormsModule,
