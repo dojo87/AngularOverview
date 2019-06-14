@@ -1,6 +1,6 @@
 import { Component, Input, Output, EventEmitter, OnInit } from '@angular/core';
 import { FormBuilder, Validators } from '@angular/forms';
-import { Section } from 'src/app/model/section';
+import { Section } from '../../model/section';
 
 @Component({
   selector: 'app-section-edit',
