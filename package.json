@@ -8,7 +8,9 @@
     "build": "ng build",
     "test": "ng test",
     "lint": "ng lint",
-    "e2e": "ng e2e"
+    "e2e": "ng e2e",
+    "mongo": "docker run -p 27017:27017 --name mongo mongo:latest",
+    "mongo-import": "mongoimport --db angular --collection course --file mockApi/courses-raw.json --jsonArray"
   },
   "private": true,
   "dependencies": {
