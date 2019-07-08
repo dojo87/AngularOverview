@@ -3,6 +3,7 @@ import { Course } from '../model/course';
 import { Observable, of, throwError } from 'rxjs';
 import { HttpClient } from '@angular/common/http';
 import { catchError } from 'rxjs/operators';
+import { environment } from '../../environments/environment';
 
 @Injectable({
   providedIn: 'root'
@@ -10,7 +11,7 @@ import { catchError } from 'rxjs/operators';
 export class CourseService {
   constructor(private http: HttpClient) {}
 
-  private api = 'http://localhost:3000/courses';
+  private api = environment.api.courses;
 
   public getCourse(slug: string): Observable<Course> {
     return this.http.get<Course>(this.api + '/' + slug).pipe(

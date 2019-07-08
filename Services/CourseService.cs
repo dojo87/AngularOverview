@@ -17,7 +17,7 @@ namespace AngularOverview.Services
 
         public List<Course> Get() => this.courses.Find(c => true).ToList();
 
-        public Course Get(string id) => this.courses.Find<Course>(c => c.Id == id).FirstOrDefault();
+        public Course Get(string id) => this.courses.Find<Course>(c => c.Slug == id).FirstOrDefault();
 
         public Course Create(Course course)
         {
